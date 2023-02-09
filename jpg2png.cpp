@@ -3,11 +3,16 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb/stb_image.h"
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb/stb_image_write.h"
+
+#define PROGRAM_NAME "jpg2png"
+
+#define AUTHORS \
+    proper_name ("Joe Liotta")
+
 using namespace std;
 
 
@@ -24,6 +29,10 @@ bool cmdOptionExists(char** begin, char** end, const std::string& option){
 }
 
 int main(int argc, char * argv[]) {
+
+    if (cmdOptionExists(argv, argv + argc, "-h")){
+        cout << "usage: jpg2png [-f <path>] [-h]" << endl;
+    }
 
     char * filename = getCmdOption(argv, argv + argc, "-f");
 
